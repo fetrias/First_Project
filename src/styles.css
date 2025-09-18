@@ -1,70 +1,277 @@
 * {
-    margin: 30;
     box-sizing: border-box;
 }
 
-dialog {
-    padding: 1.25rem;
-    border: none;
-    border-radius: 12px;
-}
-
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.form-actions {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-html,
-body {
+html, body {
     margin: 0;
     padding: 0;
 }
 
+:root {
+    --color-bg: #fff;
+    --color-fg: #0b0b0b;
+    --color-muted: #666;
+    --color-primary: #0a84ff;
+    --color-danger: #b00020;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 40px;
+    --radius: 12px;
+    --shadow: 0 1px 2px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.08);
+}
+
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: var(--font-body);
     line-height: 1.5;
+    color: var(--color-fg);
+    background: var(--color-bg);
+    padding: var(--space-3);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Формы: размеры, отступы, визуальный порядок */
-label {
-    display: block;
-    margin: 0.5rem 0 0.25rem;
+html {
+    scroll-behavior: smooth;
 }
 
-input,
-select,
-textarea,
-button {
-    width: 100%;
-    max-width: 480px;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #c8c8c8;
-    border-radius: 8px;
-    background: #fff;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid #eee;
 }
 
-/* Кнопка по умолчанию */
-button,
-[type="submit"] {
-    background: #0a84ff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+.header__brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    background: linear-gradient(45deg, #6b6bff, #4ea7cd, #45b7d1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
 }
 
-/* Состояния: клавиатура/мышь/ошибки */
-:where(input, select, textarea, button):focus-visible {
-    outline: 2px solid #0a84ff;
+.header__logo {
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+}
+
+.nav__link {
+    color: var(--color-fg);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+}
+
+.nav__link:hover {
+    color: var(--color-primary);
+    background-color: rgba(10, 132, 255, 0.1);
+}
+
+.nav__link:focus-visible {
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 
-button:hover {
+.nav__link--active {
+    color: var(--color-primary);
+    font-weight: bold;
+    background-color: rgba(10, 132, 255, 0.1);
+}
+
+.breadcrumbs {
+    margin-bottom: var(--space-4);
+    font-size: 0.9rem;
+    display: flex;
+    gap: var(--space-1);
+}
+
+.breadcrumbs__link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.breadcrumbs__link:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs__link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.breadcrumbs__current {
+    color: var(--color-muted);
+}
+
+.main {
+    padding: var(--space-3) 0;
+}
+
+.hero {
+    background: 
+        linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15)),
+        url("/assets/images/background_light.jpg") center/cover no-repeat;
+    color: #fff;
+    padding: clamp(2rem, 6vw, 6rem) var(--space-3);
+    border-radius: var(--radius);
+    margin: var(--space-4) 0;
+}
+
+.hero__content {
+    max-width: 600px;
+}
+
+.media {
+    aspect-ratio: 16/9;
+    width: min(100%, 960px);
+    margin-inline: auto;
+    margin-block: var(--space-4);
+}
+
+.media iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius);
+    display: block;
+}
+
+.gallery {
+    margin: var(--space-4) 0;
+}
+
+.gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+
+.gallery__grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+}
+
+#services, #portfolio, #contacts {
+    margin: var(--space-5) 0;
+    padding: var(--space-3);
+    border-radius: var(--radius);
+}
+
+:target {
+    background: #f0f8ff;
+    outline: 2px dashed var(--color-primary);
+    outline-offset: 4px;
+}
+
+.footer {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid #eee;
+    text-align: center;
+    color: var(--color-muted);
+}
+
+.modal {
+    padding: var(--space-4);
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: min(90%, 500px);
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.form label {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-weight: 500;
+}
+
+.form input,
+.form select,
+.form textarea {
+    width: 100%;
+    padding: var(--space-2);
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    font: inherit;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.form__actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+}
+
+.button {
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font: inherit;
+    transition: all 0.2s ease;
+}
+
+.button:hover {
+    background: #0055aa;
     filter: brightness(0.95);
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.button--secondary {
+    background: var(--color-muted);
+}
+
+.button--secondary:hover {
+    background: #555;
+}
+
+:where(input, select, textarea, button):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 :disabled,
@@ -73,7 +280,36 @@ button:hover {
     cursor: not-allowed;
 }
 
-/* Подсветка ошибочных полей (установите aria-invalid="true") */
 [aria-invalid="true"] {
-    border-color: #b00020;
+    border-color: var(--color-danger);
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+    
+    .nav__list {
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+    
+    .gallery__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .form__actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    body {
+        padding: var(--space-2);
+    }
 }

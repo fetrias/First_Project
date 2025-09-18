@@ -3,31 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная - супер сайт</title>
+    <title>Главная - супер сайт про супер свинок</title>
     <meta name="description" content="Краткое описание главной страницы вашего сайта">
     <link rel="stylesheet" href="/src/styles.css">
     <script src="/src/main.js" defer></script>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <a href="/">Логотип или название сайта</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
+    <header class="header">
+        <a class="header__brand" href="/">
+            <span class="header__logo">🐷</span>
+            СуперСвинки
+        </a>
+        <nav class="nav" aria-label="Основная навигация">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link nav__link--active" href="index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="about.html">О нас</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <a class="breadcrumbs__link" href="index.html">Главная</a>
+        <span class="breadcrumbs__current">Текущая страница</span>
+    </nav>
+
+    <main class="main">
         <h1>Добро пожаловать на наш сайт!</h1>
+
+        <div class="media">
+            <iframe
+                src="https://rutube.ru/play/embed/b6aabec93e617fd1d721042f3aeb67db"
+                title="Видео о проекте"
+                allow="clipboard-write; autoplay"
+                allowfullscreen
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <section class="hero">
+            <div class="hero__content">
+                <h2>Морские свинки -</h2>
+                <p>это прекрасные, милые, общительные и (иногда) ласковые животные!</p>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Наши булочки</h2>
+            <div class="gallery__grid">
+                <img src="/assets/images/piggy_lucy.jpg" alt="Свинка Люси" width="400" height="300" loading="lazy">
+                <img src="/assets/images/piggy_nero.jpg" alt="Свинка Неро" width="400" height="300" loading="lazy">
+                <img src="/assets/images/piggy_blanka.jpg" alt="Свинка Бланка" width="400" height="300" loading="lazy">
+                <img src="/assets/images/piggy_bonya.jpg" alt="Свинка Боня" width="400" height="300" loading="lazy">
+            </div>
+        </section>
 
         <section id="services">
             <h2>Наши услуги</h2>
             <p>Описание предоставляемых услуг...</p>
-            <a href="#contacts">Связаться с нами</a> 
+            <a href="#contacts">Связаться с нами</a>
         </section>
 
         <section id="portfolio">
@@ -38,16 +79,16 @@
         <section id="contacts">
             <h2>Контактная информация</h2>
             <p>Наши контакты - голубиная почта</p>
-            <a href="contacts.html">Подробнее</a> 
+            <a href="contacts.html">Подробнее</a>
         </section>
     </main>
 
-    <footer>
-        <button id="openDialog" type="button">Написать нам</button>
+    <footer class="footer">
+        <button id="openDialog" type="button" class="button">Написать нам</button>
 
-        <dialog id="contactDialog" aria-labelledby="dialogTitle">
+        <dialog id="contactDialog" class="modal" aria-labelledby="dialogTitle">
             <h2 id="dialogTitle">Обратная связь</h2>
-            <form id="contactForm" method="dialog" novalidate>
+            <form id="contactForm" class="form" method="dialog" novalidate>
                 <label for="name">Имя</label>
                 <input id="name" name="name" type="text" required minlength="2" autocomplete="given-name">
                 
@@ -73,14 +114,14 @@
                 <label for="message">Сообщение</label>
                 <textarea id="message" name="message" rows="4" required></textarea>
                 
-                <div class="form-actions">
-                    <button type="button" id="closeDialog">Закрыть</button>
-                    <button type="submit">Отправить</button>
+                <div class="form__actions">
+                    <button type="button" id="closeDialog" class="button button--secondary">Закрыть</button>
+                    <button type="submit" class="button">Отправить</button>
                 </div>
             </form>
         </dialog>
 
-        <p>&copy; 2025 Супер сайт. Все права защищены.</p>
+        <p>&copy; 2025 СуперСвинки. Все права защищены.</p>
         <p>Телефон: +7 (905) 588-68-67</p>
     </footer>
 </body>
