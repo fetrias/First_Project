@@ -123,5 +123,20 @@
         <p>&copy; 2025 СуперСвинки. Все права защищены.</p>
         <p>Телефон: +7 (905) 588-68-67</p>
     </footer>
+
+    <script>
+        // Определяем базовый путь
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        const repoName = 'First_Project'; // ЗАМЕНИТЕ на имя вашего репозитория
+        const basePath = isGitHubPages ? `/${repoName}/` : './';
+        
+        // Применяем фон к hero секции
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.background = 
+                `linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15)),
+                url("${basePath}assets/images/background_light.jpg") center/cover no-repeat`;
+        }
+    </script>
 </body>
 </html>

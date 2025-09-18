@@ -128,8 +128,7 @@ html {
 .hero {
     background: 
         linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15)),
-        url("/assets/images/background_light.jpg") center/cover no-repeat;
-    color: #fff;
+        var(--hero-bg, url("../assets/images/background_light.jpg")) center/cover no-repeat;    color: #fff;
     padding: clamp(2rem, 6vw, 6rem) var(--space-3);
     border-radius: var(--radius);
     margin: var(--space-4) 0;
@@ -177,12 +176,6 @@ html {
     margin: var(--space-5) 0;
     padding: var(--space-3);
     border-radius: var(--radius);
-}
-
-:target {
-    background: #f0f8ff;
-    outline: 2px dashed var(--color-primary);
-    outline-offset: 4px;
 }
 
 .footer {
